@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+ <!-- Lector, Talking Island, Weapons, Warrior  checked by Abaddon -->
+ <trade_list_npc npc="30001" shop="1" markup="lol" >
+  <item id="1" name="Short Sword" />
+  <item id="4" name="Club" />
+  <item id="11" name="Bone Dagger" />
+  <item id="13" name="Short Bow" />
+  <item id="3" name="Broadsword" />
+  <item id="152" name="Heavy Chisel" />
+  <item id="12" name="Knife" />
+  <item id="215" name="Doom Dagger" />
+  <item id="14" name="Bow" />
+  <item id="5" name="Mace" />
+  <item id="153" name="Sickle" />
+  <item id="1333" name="Brandish" />
+  <item id="66" name="Gladius" />
+  <item id="67" name="Orcish Sword" />
+  <item id="122" name="Handmade Sword" />
+  <item id="154" name="Dwarven Mace" />
+  <item id="216" name="Dirk" />
+  <item id="271" name="Hunting Bow" />
+  <item id="2" name="Long Sword" />
+  <item id="218" name="Throwing Knife" />
+  <item id="272" name="Forest Bow" />
+  <item id="15" name="Short Spear" />
+  <item id="5284" name="Zweihander" />
+ </trade_list_npc>
+ <trade_list_npc npc="30001" shop="2" markup="lol" >
+  <item id="7" name="Apprentice's Rod" />
+  <item id="308" name="Buffalo's Horn" />
+  <item id="8" name="Willow Staff" />
+  <item id="99" name="Apprentice's Spellbook" />
+  <item id="9" name="Cedar Staff" />
+  <item id="176" name="Journeyman's Staff" />
+  <item id="310" name="Relic of the Saints" />
+  <item id="9577" name="Cotton Shirt" />
+  <item id="9583" name="Striped Cotton Shirt" />
+ </trade_list_npc>
+ <!-- Erinu, Kamael Village, Weapons, Warrior -->
+ <trade_list_npc npc="32164" shop="321641" markup="lol" >
+  <item id="1" name="Short Sword" />
+  <item id="4" name="Club" />
+  <item id="11" name="Bone Dagger" />
+  <item id="13" name="Short Bow" />
+  <item id="3" name="Broadsword" />
+  <item id="152" name="Heavy Chisel" />
+  <item id="12" name="Knife" />
+  <item id="215" name="Doom Dagger" />
+  <item id="14" name="Bow" />
+  <item id="5" name="Mace" />
+  <item id="153" name="Sickle" />
+  <item id="1333" name="Brandish" />
+  <item id="66" name="Gladius" />
+  <item id="67" name="Orcish Sword" />
+  <item id="122" name="Handmade Sword" />
+  <item id="154" name="Dwarven Mace" />
+  <item id="216" name="Dirk" />
+  <item id="271" name="Hunting Bow" />
+  <item id="2" name="Long Sword" />
+  <item id="218" name="Throwing Knife" />
+  <item id="272" name="Forest Bow" />
+  <item id="15" name="Short Spear" />
+  <item id="5284" name="Zweihander" />
+  <item id="253" name="Spiked Gloves" />
+  <item id="254" name="Iron Gloves" />
+  <item id="255" name="Fox Claw Gloves" />
+  <item id="256" name="Cestus" />
+ </trade_list_npc>

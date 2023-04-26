@@ -1,0 +1,6 @@
+[
+  {"time":1681796710,"time_ms":373,"cpu_loading":0,"memory_loading":7,"window_activity":{"app_info":{"program_name":"","version":"1","executable_path":"C://"},"type":1,"main_window":"","url":"","tab":"","file_path":"t.txt","ui_hierarchy":[],"parameters":[]}},
+  {"time":1681806890,"time_ms":339,"cpu_loading":6,"memory_loading":4,"window_activity":{"app_info":{"program_name":"","version":"1","executable_path":"C://"},"type":4,"main_window":"","url":"","tab":"","file_path":"t.txt","ui_hierarchy":[],"parameters":[]}},
+  {"time":1681806904,"time_ms":148,"cpu_loading":4,"memory_loading":4,"window_activity":{"app_info":{"program_name":"","version":"1","executable_path":"C://"},"type":2,"main_window":"","url":"","tab":"","file_path":"t.txt","ui_hierarchy":[],"parameters":[]}},
+  {"time":1681806956,"time_ms":299,"cpu_loading":4,"memory_loading":0,"window_activity":{"app_info":{"program_name":"","version":"1","executable_path":"C://"},"type":5,"main_window":"","url":"","tab":"","file_path":"t.txt","ui_hierarchy":[],"parameters":[]}}
+]
