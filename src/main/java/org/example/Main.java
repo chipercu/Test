@@ -1,20 +1,17 @@
 package org.example;
 
-import com.sun.javafx.collections.MappingChange;
-import org.example.Anotation.Delay;
 import org.example.CalcPosition.LocationPoint;
 import org.example.CalcPosition.Point2D;
 import org.example.CalcPosition.Side;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.*;
-import java.util.function.Consumer;
-
-import static org.example.CommonConsts.*;
 
 public class Main {
     ScheduledExecutorService service;
@@ -23,15 +20,18 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Point2D actor = new Point2D(1750, 1560);
-        Point2D target = new Point2D(1111, 4444);
+        Point2D actor = new Point2D(-4, -3);
+        Point2D target = new Point2D(-12, 6);
 
-        Point2D position = LocationPoint.getPosition(actor, target, Side.RIGHT, 200, 100);
-        Point2D position1 = LocationPoint.getPosition(actor, target, Side.RIGHT, 300, 200);
-        Point2D position2 = LocationPoint.getPosition(actor, target, Side.RIGHT, 400, 300);
-        System.out.println(position);
-        System.out.println(position1);
-        System.out.println(position2);
+        Point2D front = LocationPoint.getNSWEPoint(actor, target, 5, Side.FRONT);
+        Point2D back = LocationPoint.getNSWEPoint(actor, target, 5, Side.BACK);
+        Point2D left = LocationPoint.getNSWEPoint(actor, target, 5, Side.LEFT);
+        Point2D right = LocationPoint.getNSWEPoint(actor, target, 5, Side.RIGHT);
+
+        System.out.println(front);
+        System.out.println(back);
+        System.out.println(left);
+        System.out.println(right);
 
 
 //        int x1 = -4;
