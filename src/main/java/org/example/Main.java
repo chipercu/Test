@@ -1,8 +1,6 @@
 package org.example;
 
-import org.example.CalcPosition.LocationPoint;
-import org.example.CalcPosition.Point2D;
-import org.example.CalcPosition.Side;
+import org.example.CalcPosition.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,18 +18,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Point2D actor = new Point2D(-4, -3);
-        Point2D target = new Point2D(-12, 6);
+        Point2D actor = new Point2D(-6, -2);
+        Point2D target = new Point2D(4, 2);
 
-        Point2D front = LocationPoint.getNSWEPoint(actor, target, 5, Side.FRONT);
-        Point2D back = LocationPoint.getNSWEPoint(actor, target, 5, Side.BACK);
-        Point2D left = LocationPoint.getNSWEPoint(actor, target, 5, Side.LEFT);
-        Point2D right = LocationPoint.getNSWEPoint(actor, target, 5, Side.RIGHT);
+        PointNSWE2P p1 = new PointNSWE2P(actor, target, 6, Side.BACK);
+        PointNSWE2P p2 = new PointNSWE2P(actor, target, 0, Side.RIGHT);
+        System.out.println(p1);
+        System.out.println(p2);
 
-        System.out.println(front);
-        System.out.println(back);
-        System.out.println(left);
-        System.out.println(right);
+        Vector2P vector2P = new Vector2P(actor, p1.getPoint2D(), p2.getPoint2D());
+
+        System.out.println(vector2P.getPoint_O2P());
+        System.out.println(vector2P);
+
+
+
+//        Point2D front = LocationPoint.getNSWEPoint(actor, target, 5, Side.FRONT);
+//        Point2D back = LocationPoint.getNSWEPoint(actor, target, 5, Side.BACK);
+//        Point2D left = LocationPoint.getNSWEPoint(actor, target, 5, Side.LEFT);
+//        Point2D right = LocationPoint.getNSWEPoint(actor, target, 5, Side.RIGHT);
+
+//        System.out.println("left -" + front);
+//        System.out.println(back);
+//        System.out.println(left);
+//        System.out.println(right);
 
 
 //        int x1 = -4;
