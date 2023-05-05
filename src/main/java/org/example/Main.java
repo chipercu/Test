@@ -1,7 +1,13 @@
 package org.example;
 
 import org.example.CalcPosition.*;
+import org.example.Listener.Commander;
+import org.example.Listener.FormationType;
+import org.example.Listener.Unit;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.InputEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,6 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.*;
 
 public class Main {
@@ -16,57 +23,70 @@ public class Main {
     private static final int maxWait = 10000;
     private static final int initialDelay = 1000;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AWTException {
 
-        Point2D actor = new Point2D(-6, -2);
-        Point2D target = new Point2D(4, 2);
+        Commander commander = new Commander(4);
 
-        PointNSWE2P p1 = new PointNSWE2P(actor, target, 6, Side.BACK);
-        PointNSWE2P p2 = new PointNSWE2P(actor, target, 0, Side.RIGHT);
-        System.out.println(p1);
-        System.out.println(p2);
+        commander.notifyMove(FormationType.FRONT_FALANG);
 
-        Vector2P vector2P = new Vector2P(actor, p1.getPoint2D(), p2.getPoint2D());
-
-        System.out.println(vector2P.getPoint_O2P());
-        System.out.println(vector2P);
-
-
-
-//        Point2D front = LocationPoint.getNSWEPoint(actor, target, 5, Side.FRONT);
-//        Point2D back = LocationPoint.getNSWEPoint(actor, target, 5, Side.BACK);
-//        Point2D left = LocationPoint.getNSWEPoint(actor, target, 5, Side.LEFT);
-//        Point2D right = LocationPoint.getNSWEPoint(actor, target, 5, Side.RIGHT);
-
-//        System.out.println("left -" + front);
-//        System.out.println(back);
-//        System.out.println(left);
-//        System.out.println(right);
-
-
-//        int x1 = -4;
-//        int y1 = -4;
-//        int x2 = -8;
-//        int y2 = -2;
-//
-//        double angle = calculateAngleFrom(x1, y1, x2, y2);
-//        double radian1 = Math.toRadians(angle + 90);
-//        double radian2 = Math.toRadians(angle - 90);
-//
-////        double sqrt = Math.sqrt(getXYDeltaSq(x1, y1, x2, y2));
-//        int followDist = 2;
-//        float width = 3; // _radius
-//
-//        double c_x =  (x1 - Math.sin(radian1) * 2);
-//        double c_y =  (y1 + Math.cos(radian1) * 2);
-//
-//        double x = c_x + (Math.cos(radian2) * width);
-//        double y = c_y +  (Math.sin(radian2) * width);
-////        double x = x1 + (Math.cos(radian1) * width);
-////        double y = y1 + (Math.sin(radian1) * width);
-//        System.out.println(x + " : " + y);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void fakeApp(boolean close) throws AWTException {
+        Random rnd = new Random();
+        int x = rnd.nextInt(10, 810);
+        int y = new Random().nextInt(10, 810);
+        Robot robot = new Robot();
+
+        JFrame a = new JFrame("fakeApp");
+        if (close){
+            a.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        }
+        a.setSize(300,300);
+        a.setLocation(x,y);
+        a.setLayout(null);
+        a.setVisible(true);
+        a.getContentPane().setBackground(new Color(new Random().nextInt(0, 255), new Random().nextInt(0, 255), new Random().nextInt(0, 255)));
+        robot.mouseMove(x + 250, y + 5);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.delay(new Random().nextInt(50, 300));
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+    }
+
+
+    class Fake extends JFrame{
+
+
+
+
+
+
+    }
+
+
+
+
+
     public static double calculateAngleFrom(int x1, int y1, int x2, int y2) {
         double angleTarget = Math.toDegrees(Math.atan2(y2 - y1, x2 - x1));
         if(angleTarget < 0)
