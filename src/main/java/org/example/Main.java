@@ -1,10 +1,5 @@
 package org.example;
 
-import org.example.CalcPosition.*;
-import org.example.Listener.Commander;
-import org.example.Listener.FormationType;
-import org.example.Listener.Unit;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -13,69 +8,70 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.example.Main.CHECK.*;
+import static org.example.Main.Checker.*;
 
 public class Main {
     ScheduledExecutorService service;
     private static final int maxWait = 10000;
     private static final int initialDelay = 1000;
 
-    public static void main(String[] args) throws AWTException {
+    enum CHECK {
+        MULTIPLE(integer -> {
+            integer *= 2;
+            System.out.println(integer);
+        }),
+        DIVISION(integer -> {
+            integer /= 2;
+            System.out.println(integer);
+        });
 
-        Commander commander = new Commander(4);
+        private final Consumer<Integer> consumer;
 
-        commander.notifyMove(FormationType.FRONT_FALANG);
-
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void fakeApp(boolean close) throws AWTException {
-        Random rnd = new Random();
-        int x = rnd.nextInt(10, 810);
-        int y = new Random().nextInt(10, 810);
-        Robot robot = new Robot();
-
-        JFrame a = new JFrame("fakeApp");
-        if (close){
-            a.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        public Consumer<Integer> getConsumer() {
+            return consumer;
         }
-        a.setSize(300,300);
-        a.setLocation(x,y);
-        a.setLayout(null);
-        a.setVisible(true);
-        a.getContentPane().setBackground(new Color(new Random().nextInt(0, 255), new Random().nextInt(0, 255), new Random().nextInt(0, 255)));
-        robot.mouseMove(x + 250, y + 5);
-        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-        robot.delay(new Random().nextInt(50, 300));
-        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+        CHECK(Consumer<Integer> integerConsumer) {
+            this.consumer = integerConsumer;
+        }
     }
 
 
-    class Fake extends JFrame{
+    public static void main(String[] args) throws IOException {
 
+        int exit = 3;
+
+        int count = 0;
+        int whileCount = 0;
+
+
+        for (int i = 0; i < 10; i++) {
+            while (true){
+                whileCount++;
+                while (ThreadLocalRandom.current().nextBoolean()){
+                    count++;
+                    if (count == exit){
+                        break;
+                    }
+                }
+                if (count == exit){
+                    System.out.println(whileCount);
+                    break;
+                }
+                count = 0;
+
+            }
+        }
 
 
 
@@ -84,26 +80,52 @@ public class Main {
     }
 
 
+    public static void match() {
+        String s = "Удаление синхронизации: {name}, {confirm}";
+        Pattern pattern = Pattern.compile(" \\{([^{}]+)\\}");
+        Matcher matcher = pattern.matcher(s);
 
+        while (matcher.find()) {
+            String str = matcher.group();
+            System.out.println(str);
+        }
 
-
-    public static double calculateAngleFrom(int x1, int y1, int x2, int y2) {
-        double angleTarget = Math.toDegrees(Math.atan2(y2 - y1, x2 - x1));
-        if(angleTarget < 0)
-            angleTarget = 360 + angleTarget;
-        return angleTarget;
-    }
-    public static final long getXYDeltaSq(int x1, int y1, int x2, int y2)
-    {
-        long dx = x2 - x1;
-        long dy = y2 - y1;
-        return dx * dx + dy * dy;
     }
 
+    static class Mouse {
+        private int rightButton = 20;
+        private int leftButton = 30;
+
+        public Mouse clickCenter(CHECK... checks) {
+            for (CHECK c : checks) {
+                c.getConsumer().accept(rightButton);
+            }
+
+            return this;
+        }
+    }
+
+    static class Checker {
+        private String type;
 
 
+        public static Consumer<Integer> beforeCheck() {
+            return System.out::println;
+        }
 
 
+    }
+
+
+    public static Stream<List<String>> getList(String ex) {
+        return ex != null ? Stream.of(Arrays.stream(ex.split(":")).collect(Collectors.toList())) : Stream.empty();
+    }
+
+
+    class Fake extends JFrame {
+
+
+    }
 
 
 //    enum mapEnum{
